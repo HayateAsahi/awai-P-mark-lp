@@ -17,6 +17,30 @@ window.tailwind.config = {
 
 // UI behavior
 document.addEventListener('DOMContentLoaded', () => {
+    // Header offset sync
+    const root = document.documentElement;
+    const siteHeader = document.querySelector('.site-header');
+
+    const syncHeaderHeight = () => {
+        if (!siteHeader) {
+            return;
+        }
+
+        root.style.setProperty('--site-header-height', `${siteHeader.offsetHeight}px`);
+    };
+
+    syncHeaderHeight();
+    window.addEventListener('load', syncHeaderHeight);
+    window.addEventListener('resize', syncHeaderHeight);
+
+    if (siteHeader && 'ResizeObserver' in window) {
+        const headerResizeObserver = new ResizeObserver(() => {
+            syncHeaderHeight();
+        });
+
+        headerResizeObserver.observe(siteHeader);
+    }
+
     // Scroll reveal
     const revealSections = document.querySelectorAll('.reveal-section');
 
