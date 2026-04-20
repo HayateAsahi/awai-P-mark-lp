@@ -17,6 +17,29 @@ window.tailwind.config = {
 
 // UI behavior
 document.addEventListener('DOMContentLoaded', () => {
+    const resolveContactApiUrl = () => {
+        const metaBaseUrl = document.querySelector('meta[name="awai-api-base-url"]')?.content?.trim();
+        const configuredBaseUrl = metaBaseUrl || window.AWAI_API_BASE_URL;
+
+        if (configuredBaseUrl) {
+            return new URL('/api/contact', configuredBaseUrl).toString();
+        }
+
+        if (window.location.protocol === 'file:') {
+            return 'http://127.0.0.1:8000/api/contact';
+        }
+
+        const isLocalStaticServer = ['5500', '8080'].includes(window.location.port);
+
+        if (isLocalStaticServer) {
+            return `${window.location.protocol}//${window.location.hostname}:8000/api/contact`;
+        }
+
+        return '/api/contact';
+    };
+
+    const contactApiUrl = resolveContactApiUrl();
+
     // Header offset sync
     const root = document.documentElement;
     const siteHeader = document.querySelector('.site-header');
@@ -90,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             syncSubmitState();
 
             try {
-                const response = await fetch('/api/contact', {
+                const response = await fetch(contactApiUrl, {
                     method: 'POST',
                     body: formData
                 });
