@@ -453,7 +453,14 @@
             </p>
           </div>
 
-          <form id="contact-form" action="#" method="POST" class="space-y-6">
+          <form id="contact-form" action="contact.php" method="POST" class="space-y-6">
+            <input type="hidden" name="return_to" value="consultant-story.html#contact-form" />
+            <div class="contact-form__honeypot" aria-hidden="true">
+              <label>
+                Website
+                <input type="text" name="website" tabindex="-1" autocomplete="off" />
+              </label>
+            </div>
             <div class="contact-form__field">
               <label class="contact-form__label"
                 >会社名 <span class="text-red-500 ml-1">*</span></label

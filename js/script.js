@@ -17,28 +17,8 @@ window.tailwind.config = {
 
 // UI behavior
 document.addEventListener('DOMContentLoaded', () => {
-    const resolveContactApiUrl = () => {
-        const metaBaseUrl = document.querySelector('meta[name="awai-api-base-url"]')?.content?.trim();
-        const configuredBaseUrl = metaBaseUrl || window.AWAI_API_BASE_URL;
-
-        if (configuredBaseUrl) {
-            return new URL('/api/contact', configuredBaseUrl).toString();
-        }
-
-        if (window.location.protocol === 'file:') {
-            return 'http://127.0.0.1:8000/api/contact';
-        }
-
-        const isLocalStaticServer = ['5500', '8080'].includes(window.location.port);
-
-        if (isLocalStaticServer) {
-            return `${window.location.protocol}//${window.location.hostname}:8000/api/contact`;
-        }
-
-        return '/api/contact';
-    };
-
-    const contactApiUrl = resolveContactApiUrl();
+    const contactForm = document.querySelector('#contact-form');
+    const contactApiUrl = contactForm?.getAttribute('action') || 'contact.php';
 
     // Header offset sync
     const root = document.documentElement;
@@ -65,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Keep submit disabled until the full contact form is valid.
-    const contactForm = document.querySelector('#contact-form');
     const privacyConsent = document.querySelector('#privacy-consent');
     const contactSubmit = document.querySelector('#contact-submit');
     const contactFeedback = document.querySelector('#contact-feedback');
@@ -91,6 +70,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
+        const applyFeedbackFromQuery = () => {
+            const params = new URLSearchParams(window.location.search);
+            const status = params.get('contact_status');
+            const message = params.get('contact_message');
+
+            if (!status || !message) {
+                return;
+            }
+
+            setFeedback(message, status === 'success' ? 'success' : 'error');
+            params.delete('contact_status');
+            params.delete('contact_message');
+
+            const nextSearch = params.toString();
+            const nextUrl = `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ''}${window.location.hash}`;
+            window.history.replaceState({}, document.title, nextUrl);
+        };
+
+        applyFeedbackFromQuery();
         syncSubmitState();
 
         contactForm.addEventListener('input', syncSubmitState);
@@ -105,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const formData = new FormData(contactForm);
-            formData.delete('privacy_consent');
 
             isSubmitting = true;
             setFeedback('');
@@ -115,19 +112,30 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const response = await fetch(contactApiUrl, {
                     method: 'POST',
-                    body: formData
+                    body: formData,
+                    headers: {
+                        Accept: 'application/json'
+                    }
                 });
+                const isJson = response.headers.get('content-type')?.includes('application/json');
+                const result = isJson ? await response.json() : null;
 
-                const result = await response.json();
+                if (!response.ok || !result?.data?.sent) {
+                    if (result?.error?.fields) {
+                        const firstFieldError = Object.values(result.error.fields)[0];
+                        throw new Error(firstFieldError || result.error.message || '入力内容をご確認ください。');
+                    }
 
-                if (!response.ok || !result.data?.sent) {
-                    throw new Error(result.error?.message || 'お問い合わせの送信に失敗しました。時間をおいて再度お試しください。');
+                    throw new Error(result?.error?.message || 'お問い合わせの送信に失敗しました。時間をおいて再度お試しください。');
                 }
 
                 setFeedback(result.data.message || 'お問い合わせを受け付けました。', 'success');
                 contactForm.reset();
             } catch (error) {
-                setFeedback(error.message || 'お問い合わせの送信に失敗しました。時間をおいて再度お試しください。', 'error');
+                const message = error instanceof Error && error.message
+                    ? error.message
+                    : 'お問い合わせの送信に失敗しました。時間をおいて再度お試しください。';
+                setFeedback(message, 'error');
             } finally {
                 isSubmitting = false;
                 contactSubmit.textContent = contactSubmitDefaultLabel;
