@@ -1,8 +1,4 @@
-<?php
-
-declare(strict_types=1);
-
-return [
+<?php return [
     // Xserver で別アドレスや return-path を使う場合のみ上書きしてください。
     'transport' => 'mail',
     'from_email' => 'no-reply@awai-consulting.co.jp',

@@ -36,6 +36,8 @@ if ($errors !== []) {
     respond_validation_error($errors, $expectsJson, $input['return_to']);
 }
 
+error_log('[DEBUG] contact input: ' . print_r($input, true));
+
 try {
     send_contact_mail($config, $input);
     send_auto_reply_mail($config, $input);
@@ -175,14 +177,14 @@ function send_auto_reply_mail(array $config, array $input): void
 function build_mail_headers(string $fromEmail, ?string $replyToEmail = null): array
 {
     $headers = [
-        'From: ' . $fromEmail,
-        'MIME-Version: 1.0',
-        'Content-Type: text/plain; charset=UTF-8',
-        'Content-Transfer-Encoding: 8bit',
+        'From' => $fromEmail,
+        'MIME-Version' => '1.0',
+        'Content-Type' => 'text/plain; charset=UTF-8',
+        'Content-Transfer-Encoding' => '8bit',
     ];
 
     if ($replyToEmail !== null && $replyToEmail !== '') {
-        $headers[] = 'Reply-To: ' . $replyToEmail;
+        $headers['Reply-To'] = $replyToEmail;
     }
 
     return $headers;

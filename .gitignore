@@ -1,2 +1,2 @@
-backend/.env
 config/mail.local.php
+backend/.env

@@ -135,11 +135,6 @@ html {
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(
-    180deg,
-    rgb(248, 250, 252),
-    rgb(255, 255, 255)
-  );
   margin-top: var(--site-header-height);
 }
 
