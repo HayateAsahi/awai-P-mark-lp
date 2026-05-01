@@ -130,7 +130,7 @@ function send_contact_mail(array $config, array $input): void
     );
 
     $body = implode("\n", [
-        'LPのお問い合わせフォームから新しいお問い合わせが届きました。',
+        'Pマーク新規LPのお問い合わせフォームから新しいお問い合わせが届きました。',
         '',
         '会社名：' . $input['company_name'],
         '担当者名：' . $input['person_name'],
