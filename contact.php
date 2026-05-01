@@ -279,7 +279,7 @@ function send_json(int $statusCode, array $payload): void
 
 function redirect_with_feedback(string $returnTo, string $status, string $message): void
 {
-    $target = $returnTo !== '' ? $returnTo : 'consultant-story.html#contact-form';
+    $target = $returnTo !== '' ? $returnTo : 'index.html#contact-form';
     $target = sanitize_return_to($target);
     [$path, $hash] = split_hash_fragment($target);
     $separator = str_contains($path, '?') ? '&' : '?';
@@ -299,7 +299,7 @@ function sanitize_return_to(string $returnTo): string
         || preg_match('/^(?:https?:)?\/\//i', $returnTo) === 1
         || preg_match('/[\r\n]/', $returnTo) === 1
     ) {
-        return 'consultant-story.html#contact-form';
+        return 'index.html#contact-form';
     }
 
     if ($returnTo[0] !== '/') {
@@ -312,7 +312,7 @@ function sanitize_return_to(string $returnTo): string
 function split_hash_fragment(string $target): array
 {
     $parts = explode('#', $target, 2);
-    $path = $parts[0] !== '' ? $parts[0] : 'consultant-story.html';
+    $path = $parts[0] !== '' ? $parts[0] : 'index.html';
     $hash = isset($parts[1]) && $parts[1] !== '' ? '#' . $parts[1] : '';
 
     return [$path, $hash];
