@@ -75,10 +75,19 @@ html {
 }
 
 .site-header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
   color: var(--color-slate-800);
   font-weight: 900;
   letter-spacing: 0.02em;
   transition: color 0.3s ease;
+}
+
+.site-header__brand img {
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
 }
 
 .site-header__brand:hover {
