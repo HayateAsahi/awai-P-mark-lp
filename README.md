@@ -9,7 +9,7 @@ https://docs.google.com/spreadsheets/d/1JrfwkxJgk82RoyYBwTBorZahNrXPQKiysrALsryp
 公開ディレクトリに配置する主なファイル:
 
 ```text
-consultant-story.html
+index.html
 contact.php
 css/
 js/
@@ -24,7 +24,7 @@ config/
 1. `config/mail.php` をベース設定として確認します。
 2. 本番の実値は `config/mail.local.php` として配置します。
 3. `config/.htaccess` で設定ファイルへの直接アクセスを拒否します。
-4. `consultant-story.html` と `contact.php` を同じ公開ディレクトリにアップロードします。
+4. `index.html` と `contact.php` を同じ公開ディレクトリにアップロードします。
 
 `config/mail.local.php` の例:
 
