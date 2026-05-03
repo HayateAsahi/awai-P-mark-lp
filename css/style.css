@@ -10,6 +10,7 @@
   --color-amber-200: #fde68a;
   --color-amber-500: #f59e0b;
   --color-amber-600: #d97706;
+  --color-slate-0: #ffffff;
   --color-slate-50: #f8fafc;
   --color-slate-200: #e2e8f0;
   --color-slate-300: #cbd5e1;
@@ -45,6 +46,7 @@ body {
     sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  background: var(--color-slate-0);
 }
 
 h1,
@@ -79,7 +81,7 @@ button {
 
 .page {
   min-height: 100%;
-  background: var(--color-slate-50);
+  background: var(--color-slate-0);
   color: var(--color-slate-800);
   font-family:
     "Noto Sans JP",
@@ -233,7 +235,6 @@ button {
   position: relative;
   overflow: hidden;
   margin-top: var(--site-header-height);
-  border-bottom: 1px solid var(--color-slate-200);
 }
 
 .hero__inner {
@@ -242,8 +243,9 @@ button {
 
 .hero__layout {
   position: relative;
-  display: grid;
-  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   align-items: stretch;
 }
 
@@ -255,10 +257,12 @@ button {
 
 .hero__visual {
   position: relative;
-  min-height: 320px;
+  z-index: 1;
+  min-height: clamp(260px, 64vw, 430px);
+  margin-top: -2rem;
   border-radius: 2px;
-  background-image: url("../img/fv-bg-half.png");
-  background-position: center left;
+  background-image: url("../img/fv-bg-half-sp.png");
+  background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -290,11 +294,11 @@ button {
 
 .hero__panel {
   width: 100%;
+  max-width: 44rem;
   padding: 2rem 1.5rem;
   text-align: left;
   border-radius: 2px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: var(--shadow-panel);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .hero__title {
@@ -1767,12 +1771,14 @@ button {
   }
 
   .hero__layout {
-    gap: 1.5rem;
+    gap: 0;
   }
 
   .hero__visual {
-    min-height: 260px;
-    background-position: center;
+    min-height: clamp(280px, 46vw, 430px);
+    margin-top: -2.75rem;
+    background-image: url("../img/fv-bg-half-tab.png");
+    background-position: center top;
   }
 
   .button--hero,
@@ -1805,6 +1811,20 @@ button {
   }
 }
 
+@media (max-width: 767px) {
+  .hero__inner {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .hero__visual {
+    min-height: clamp(260px, 64vw, 360px);
+    margin-top: -2rem;
+    background-image: url("../img/fv-bg-half-sp.png");
+    background-position: center top;
+  }
+}
+
 @media (min-width: 768px) {
   .site-header__inner {
     padding: 1.25rem 2rem;
@@ -1821,12 +1841,11 @@ button {
   }
 
   .hero__panel {
-    padding: 3rem 0 3rem 2.5rem;
-    box-shadow: none;
+    padding: 3rem 2.5rem 3rem 2.5rem;
   }
 
   .hero__title {
-    font-size: 3.75rem;
+    font-size: clamp(3.1rem, 5.2vw, 3.75rem);
     line-height: 1;
   }
 
@@ -1874,18 +1893,31 @@ button {
   }
 
   .hero__layout {
-    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
-    gap: 0;
+    display: block;
     min-height: 680px;
   }
 
   .hero__content {
     display: flex;
     align-items: center;
+    min-height: 680px;
+    max-width: min(62vw, 720px);
+    transform: translateX(clamp(1rem, 4vw, 4rem));
   }
 
   .hero__visual {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: min(64vw, 920px);
     min-height: 100%;
+    margin-top: 0;
+    background-image: url("../img/fv-bg-half.png");
+    background-position: center right;
+  }
+
+  .hero__panel {
+    max-width: 46rem;
+    padding-right: clamp(2.5rem, 5vw, 5rem);
   }
 
   .reason-section__list {
