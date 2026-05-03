@@ -8,7 +8,6 @@
       企業ごとの課題に寄り添うコンサルティング
     </title>
     <script src="./js/script.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/svg+xml" href="./img/awai-favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,38 +17,34 @@
     />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body class="page font-sans bg-slate-50 text-slate-800">
-    <header class="site-header fixed top-0 left-0 z-30 w-full">
-      <div
-        class="w-full px-4 py-4 md:px-8 md:py-5 xl:px-12 flex items-center justify-between gap-4"
-      >
+  <body class="page">
+    <header class="site-header">
+      <div class="site-header__inner">
         <a
           href="https://awai-consulting.co.jp/"
-          class="site-header__brand text-base md:text-lg"
+          class="site-header__brand"
         >
           <img src="./img/awai-logo.png" alt="" aria-hidden="true" />
           株式会社あわいコンサルティング
         </a>
         <a
           href="#cta-form"
-          class="button button--primary button--compact text-sm md:text-base whitespace-nowrap"
+          class="button button--primary button--compact"
         >
           今すぐ無料相談する
         </a>
       </div>
     </header>
 
-    <div class="hero border-b border-slate-200">
-      <div class="hero__glow hero__glow--sky w-64 h-64 -top-8 -left-8"></div>
-      <div
-        class="hero__glow hero__glow--amber w-72 h-72 bottom-0 right-0"
-      ></div>
-      <div class="hero__inner relative">
+    <div class="hero">
+      <div class="hero__glow hero__glow--sky"></div>
+      <div class="hero__glow hero__glow--amber"></div>
+      <div class="hero__inner">
         <div class="hero__layout">
           <div class="hero__content reveal-section">
-            <div class="hero__panel px-6 py-8 md:px-10 md:py-12 text-left">
-              <p class="section-kicker mb-6">Ｐマーク取得コンサルティング</p>
-              <h1 class="hero__title text-4xl md:text-6xl">
+            <div class="hero__panel">
+              <p class="section-kicker">Ｐマーク取得コンサルティング</p>
+              <h1 class="hero__title">
                 企業ごとの<span
                   class="hero__title-emphasis hero__title-emphasis--sky"
                   >課題</span
@@ -59,33 +54,33 @@
                   >コンサルティング</span
                 >
               </h1>
-              <p class="hero__lead text-lg md:text-xl max-w-3xl">
+              <p class="hero__lead">
                 無駄な工数を削減し
                 <span class="hero__lead-chip">最短ルートで取得へ。</span
-                ><br class="hidden md:block" />
+                ><br class="hero__lead-break" />
                 一社一社に寄り添いながら、確実に取得まで導きます。
               </p>
-              <div class="grid sm:grid-cols-2 gap-4 mb-10 text-left">
-                <div class="hero__stat hero__stat--sky p-5">
+              <div class="hero__stats">
+                <div class="hero__stat hero__stat--sky">
                   <p class="hero__stat-label">取得期間</p>
-                  <p class="hero__stat-value text-4xl">
+                  <p class="hero__stat-value">
                     <span class="hero__stat-value-accent">最短</span>4ヶ月
                   </p>
                   <p class="hero__stat-note">※審査機関事由により若干前後あり</p>
                 </div>
-                <div class="hero__stat hero__stat--amber p-5">
+                <div class="hero__stat hero__stat--amber">
                   <p class="hero__stat-label hero__stat-label--amber">費用</p>
-                  <p class="hero__stat-value text-4xl">
+                  <p class="hero__stat-value">
                     <span
                       class="hero__stat-value-accent hero__stat-value-accent--amber"
                       >495,000円</span
-                    ><span class="text-base font-bold">（税込）</span>
+                    ><span class="hero__stat-tax">（税込）</span>
                   </p>
                 </div>
               </div>
               <a
                 href="#cta-form"
-                class="button button--primary button--hero text-2xl"
+                class="button button--primary button--hero"
               >
                 今すぐ無料相談する
               </a>
@@ -96,64 +91,56 @@
       </div>
     </div>
 
-    <section class="section-shell section-shell--gradient px-4 py-24">
-      <div class="section-shell__inner max-w-4xl mx-auto pt-8 reveal-section">
-        <h2 class="section-shell__title text-4xl md:text-5xl">
+    <section class="section-shell section-shell--gradient">
+      <div
+        class="section-shell__inner section-shell__inner--narrow reveal-section"
+      >
+        <h2 class="section-shell__title">
           こんな状況でお困りの企業様へ
         </h2>
-        <div class="grid md:grid-cols-2 gap-6">
-          <div
-            class="problem-section__card problem-section__card--sky p-8 gap-4"
-          >
+        <div class="problem-section__grid">
+          <div class="problem-section__card problem-section__card--sky">
             <div class="problem-section__icon problem-section__icon--sky">
               ✓
             </div>
-            <p class="problem-section__text text-lg">
+            <p class="problem-section__text">
               担当を任されたものの、<br />
               <span class="text-chip">何から手をつければいいか分からない</span>
             </p>
           </div>
-          <div
-            class="problem-section__card problem-section__card--sky p-8 gap-4"
-          >
+          <div class="problem-section__card problem-section__card--sky">
             <div class="problem-section__icon problem-section__icon--sky">
               ✓
             </div>
-            <p class="problem-section__text text-lg">
+            <p class="problem-section__text">
               取引先から「いつ取得できますか？」と急かされ、
               <span class="text-chip">プレッシャーを感じている</span>
             </p>
           </div>
-          <div
-            class="problem-section__card problem-section__card--sky p-8 gap-4"
-          >
+          <div class="problem-section__card problem-section__card--sky">
             <div class="problem-section__icon problem-section__icon--sky">
               ✓
             </div>
-            <p class="problem-section__text text-lg">
+            <p class="problem-section__text">
               通常業務に追われ、気づけば<span class="text-chip"
                 >対応が止まってしまっている</span
               >
             </p>
           </div>
-          <div
-            class="problem-section__card problem-section__card--sky p-8 gap-4"
-          >
+          <div class="problem-section__card problem-section__card--sky">
             <div class="problem-section__icon problem-section__icon--sky">
               ✓
             </div>
-            <p class="problem-section__text text-lg">
+            <p class="problem-section__text">
               社内の人手が不足しており、<br />
               <span class="text-chip">これ以上負担を増やすのが難しい</span>
             </p>
           </div>
-          <div
-            class="problem-section__card problem-section__card--sky p-8 gap-4"
-          >
+          <div class="problem-section__card problem-section__card--sky">
             <div class="problem-section__icon problem-section__icon--sky">
               ✓
             </div>
-            <p class="problem-section__text text-lg">
+            <p class="problem-section__text">
               この進め方で
               <span class="text-chip"
                 >本当に審査に通るのか、自信が持てない</span
@@ -168,14 +155,16 @@
     </div>
 
     <section
-      class="section-shell section-shell--geo border-y border-slate-200 px-4 py-24"
+      class="section-shell section-shell--geo section-shell--border-y"
     >
-      <div class="section-shell__inner max-w-5xl mx-auto pt-8 reveal-section">
-        <h2 class="section-shell__title text-4xl md:text-5xl">
+      <div
+        class="section-shell__inner section-shell__inner--medium reveal-section"
+      >
+        <h2 class="section-shell__title">
           当社は、企業様の要望に合わせて
           <span class="section-shell__title-emphasis">柔軟に対応します。</span>
         </h2>
-        <p class="solution-section__lead text-center text-lg">
+        <p class="solution-section__lead">
           Pマーク取得は、企業ごとに体制や課題が異なります。<br />
           当社では、画一的な進め方ではなく、<br />
           貴社の状況に合わせて「任せる部分」と「社内で対応する部分」を整理し、最適な進め方を設計。<br />
@@ -187,16 +176,18 @@
     </section>
 
     <section
-      class="reason-section section-shell section-shell--pattern px-4 py-24"
+      class="reason-section section-shell section-shell--pattern"
     >
-      <div class="section-shell__inner max-w-6xl mx-auto pt-8 reveal-section">
-        <h2 class="section-shell__title text-4xl md:text-5xl">
+      <div
+        class="section-shell__inner section-shell__inner--wide reveal-section"
+      >
+        <h2 class="section-shell__title">
           あわいコンサルティングが選ばれる<br />
           <span class="section-shell__title-chip">３つの理由</span>
         </h2>
 
         <div class="reason-section__list">
-          <div class="reason-section__card p-8 md:p-10">
+          <div class="reason-section__card">
             <p class="reason-section__index">01</p>
             <h3 class="reason-section__title">幅広い実績と専門性</h3>
             <img
@@ -211,7 +202,7 @@
             </p>
           </div>
 
-          <div class="reason-section__card p-8 md:p-10">
+          <div class="reason-section__card">
             <p class="reason-section__index">02</p>
             <h3 class="reason-section__title">取得・更新率100％・返金保証</h3>
             <img
@@ -227,7 +218,7 @@
             </p>
           </div>
 
-          <div class="reason-section__card p-8 md:p-10">
+          <div class="reason-section__card">
             <p class="reason-section__index">03</p>
             <h3 class="reason-section__title">ニーズに応じた柔軟な支援体制</h3>
             <img
@@ -246,12 +237,12 @@
       </div>
     </section>
 
-<section class="section-shell section-shell--plain px-4 py-24">
+<section class="section-shell section-shell--plain">
   <div
-    class="section-shell__inner process-section__inner mx-auto pt-8 reveal-section"
+    class="section-shell__inner process-section__inner reveal-section"
   >
     <div class="process-section process-section--five-steps">
-      <h2 class="section-shell__title text-4xl md:text-5xl">
+      <h2 class="section-shell__title">
         Pマーク取得までのステップ
       </h2>
       <p class="process-section__lead">
@@ -369,22 +360,18 @@
   </div>
 </section>
 
-    <section class="cta-banner px-4 py-24 text-white relative overflow-hidden">
-      <div
-        class="cta-banner__glow cta-banner__glow--light w-64 h-64 -top-10 -right-10"
-      ></div>
-      <div
-        class="cta-banner__glow cta-banner__glow--amber w-64 h-64 -bottom-10 -left-10"
-      ></div>
-      <div class="max-w-4xl mx-auto reveal-section">
-        <div class="cta-banner__panel p-8 md:p-12">
-          <div class="text-center mb-10">
-            <h2 class="cta-banner__title text-4xl md:text-5xl">
+    <section class="cta-banner">
+      <div class="cta-banner__glow cta-banner__glow--light"></div>
+      <div class="cta-banner__glow cta-banner__glow--amber"></div>
+      <div class="cta-banner__inner reveal-section">
+        <div class="cta-banner__panel">
+          <div class="cta-banner__header">
+            <h2 class="cta-banner__title">
               無料相談でここまで分かります
             </h2>
           </div>
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="cta-banner__item p-5 gap-4">
+          <div class="cta-banner__grid">
+            <div class="cta-banner__item">
               <div class="cta-banner__item-index">01</div>
               <div class="cta-banner__item-body">
                 <h3 class="cta-banner__item-title">最短取得スケジュール</h3>
@@ -393,7 +380,7 @@
                 </p>
               </div>
             </div>
-            <div class="cta-banner__item p-5 gap-4">
+            <div class="cta-banner__item">
               <div class="cta-banner__item-index">02</div>
               <div class="cta-banner__item-body">
                 <h3 class="cta-banner__item-title">必要な作業一覧</h3>
@@ -402,7 +389,7 @@
                 </p>
               </div>
             </div>
-            <div class="cta-banner__item p-5 gap-4">
+            <div class="cta-banner__item">
               <div class="cta-banner__item-index">03</div>
               <div class="cta-banner__item-body">
                 <h3 class="cta-banner__item-title">貴社の課題整理</h3>
@@ -411,7 +398,7 @@
                 </p>
               </div>
             </div>
-            <div class="cta-banner__item p-5 gap-4">
+            <div class="cta-banner__item">
               <div class="cta-banner__item-index">04</div>
               <div class="cta-banner__item-body">
                 <h3 class="cta-banner__item-title">取得可否の診断</h3>
@@ -421,10 +408,10 @@
               </div>
             </div>
           </div>
-          <div class="text-center mt-10">
+          <div class="cta-banner__action">
             <a
               href="#cta-form"
-              class="button button--primary button--hero text-lg"
+              class="button button--primary button--hero button--hero-secondary"
             >
               Pマーク取得について無料相談する
             </a>
@@ -435,12 +422,12 @@
 
     <section
       id="cta-form"
-      class="section-shell section-shell--pattern section-shell--bordered px-4 py-24"
+      class="section-shell section-shell--pattern section-shell--bordered"
     >
-      <div class="max-w-3xl mx-auto reveal-section">
-        <div class="contact-section__panel p-8 md:p-12">
-          <div class="text-center mb-10">
-            <h2 class="contact-section__title text-2xl md:text-3xl">
+      <div class="contact-section__inner reveal-section">
+        <div class="contact-section__panel">
+          <div class="contact-section__header">
+            <h2 class="contact-section__title">
               無料相談で、貴社に合った進め方をご提案
             </h2>
             <p class="contact-section__lead">
@@ -454,7 +441,7 @@
             </p>
           </div>
 
-          <form id="contact-form" action="contact.php" method="POST" class="space-y-6">
+          <form id="contact-form" action="contact.php" method="POST" class="contact-form">
             <input type="hidden" name="return_to" value="index.html#contact-form" />
             <div class="contact-form__honeypot" aria-hidden="true">
               <label>
@@ -464,66 +451,66 @@
             </div>
             <div class="contact-form__field">
               <label class="contact-form__label"
-                >会社名 <span class="text-red-500 ml-1">*</span></label
+                >会社名 <span class="contact-form__required">*</span></label
               >
               <input
                 type="text"
                 name="company_name"
                 required
                 placeholder="株式会社〇〇"
-                class="contact-form__input w-full p-3"
+                class="contact-form__input"
               />
             </div>
             <div class="contact-form__field">
               <label class="contact-form__label"
-                >担当者名 <span class="text-red-500 ml-1">*</span></label
+                >担当者名 <span class="contact-form__required">*</span></label
               >
               <input
                 type="text"
                 name="person_name"
                 required
                 placeholder="山田 太郎"
-                class="contact-form__input w-full p-3"
+                class="contact-form__input"
               />
             </div>
-            <div class="grid md:grid-cols-2 gap-6">
+            <div class="contact-form__grid">
               <div class="contact-form__field">
                 <label class="contact-form__label"
                   >メールアドレス
-                  <span class="text-red-500 ml-1">*</span></label
+                  <span class="contact-form__required">*</span></label
                 >
                 <input
                   type="email"
                   name="email"
                   required
                   placeholder="example@company.com"
-                  class="contact-form__input w-full p-3"
+                  class="contact-form__input"
                 />
               </div>
               <div class="contact-form__field">
                 <label class="contact-form__label"
-                  >電話番号 <span class="text-red-500 ml-1">*</span></label
+                  >電話番号 <span class="contact-form__required">*</span></label
                 >
                 <input
                   type="tel"
                   name="phone"
                   required
                   placeholder="03-0000-0000"
-                  class="contact-form__input w-full p-3"
+                  class="contact-form__input"
                 />
               </div>
             </div>
             <div class="contact-form__field">
               <label class="contact-form__label"
                 >お問い合わせ内容
-                <span class="text-red-500 ml-1">*</span></label
+                <span class="contact-form__required">*</span></label
               >
               <textarea
                 name="message"
                 rows="4"
                 required
                 placeholder="・取引先から〇月までに取得してほしいと言われている&#13;&#10;・何から始めればいいか相談したい"
-                class="contact-form__input contact-form__input--textarea w-full p-3"
+                class="contact-form__input contact-form__input--textarea"
               ></textarea>
             </div>
 
@@ -541,7 +528,7 @@
                   <span class="contact-form__required-badge">必須</span>
                 </span>
               </label>
-              <p class="contact-form__consent-note text-sm">
+              <p class="contact-form__consent-note">
                 お問合せフォームをご利用の際は、「<a
                   href="https://awai-consulting.co.jp/privacy-handling"
                   class="contact-form__privacy-link"
@@ -552,7 +539,7 @@
               </p>
             </div>
 
-            <div class="pt-6 text-center">
+            <div class="contact-form__actions">
               <p
                 id="contact-feedback"
                 class="contact-form__feedback"
@@ -562,11 +549,11 @@
                 type="submit"
                 id="contact-submit"
                 disabled
-                class="button button--primary button--submit w-full md:w-auto text-lg"
+                class="button button--primary button--submit"
               >
                 今すぐ無料相談する
               </button>
-              <p class="contact-form__privacy text-xs mt-4">
+              <p class="contact-form__privacy">
                 ※ご入力いただいた情報は、お問い合わせの回答以外の目的では使用いたしません。
               </p>
             </div>
@@ -575,16 +562,16 @@
       </div>
     </section>
 
-    <footer class="footer px-4 py-12 text-center">
-      <div class="max-w-4xl mx-auto">
+    <footer class="footer">
+      <div class="footer__inner">
         <h3 class="footer__title">株式会社あわいコンサルティング</h3>
         <a
           href="https://awai-consulting.co.jp/privacy-policy"
-          class="footer__lead text-sm"
+          class="footer__lead"
         >
           プライバシーポリシー
         </a>
-        <div class="footer__copyright text-sm p-5">
+        <div class="footer__copyright">
           &copy; 2026 株式会社あわいコンサルティング. All Rights Reserved.
         </div>
       </div>
