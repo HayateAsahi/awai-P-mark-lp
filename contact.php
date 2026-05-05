@@ -124,7 +124,7 @@ function is_safe_email(string $email): bool
 function send_contact_mail(array $config, array $input): void
 {
     $subject = sprintf(
-        '【お問い合わせ】%s / %s',
+        '【お問い合わせ】%s / %s様',
         $input['company_name'],
         $input['person_name']
     );
