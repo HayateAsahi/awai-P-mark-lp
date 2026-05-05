@@ -52,8 +52,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (contactForm && privacyConsent && contactSubmit) {
         let isSubmitting = false;
+        const emailInput = contactForm.querySelector('input[name="email"]');
+        const phoneInput = contactForm.querySelector('input[name="phone"]');
+        const emailError = document.querySelector('#contact-email-error');
+        const phoneError = document.querySelector('#contact-phone-error');
+        const fieldRules = [
+            {
+                input: emailInput,
+                error: emailError,
+                message: 'メールアドレスの形式が正しくありません。',
+                isValid: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+            },
+            {
+                input: phoneInput,
+                error: phoneError,
+                message: '電話番号は数字・ハイフンを含む6〜20文字で入力してください。',
+                isValid: (value) => /^[\d\-+() ]{6,20}$/.test(value)
+            }
+        ];
+
+        const syncFieldErrors = () => {
+            let isValid = true;
+
+            fieldRules.forEach(({ input, error, message, isValid: validateValue }) => {
+                if (!input || !error) {
+                    return;
+                }
+
+                const value = input.value.trim();
+                const hasFormatError = value !== '' && !validateValue(value);
+
+                input.setCustomValidity(hasFormatError ? message : '');
+                input.setAttribute('aria-invalid', hasFormatError ? 'true' : 'false');
+                error.textContent = hasFormatError ? message : '';
+
+                if (hasFormatError) {
+                    isValid = false;
+                }
+            });
+
+            return isValid;
+        };
 
         const syncSubmitState = () => {
+            syncFieldErrors();
             contactSubmit.disabled = isSubmitting || !contactForm.checkValidity();
         };
 
@@ -96,8 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', async (event) => {
             event.preventDefault();
 
+            const hasValidInlineFields = syncFieldErrors();
+
             if (!contactForm.checkValidity()) {
-                contactForm.reportValidity();
+                if (hasValidInlineFields) {
+                    contactForm.reportValidity();
+                }
                 syncSubmitState();
                 return;
             }

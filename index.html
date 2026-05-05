@@ -480,10 +480,17 @@
                 <input
                   type="email"
                   name="email"
+                  id="contact-email"
                   required
                   placeholder="example@company.com"
                   class="contact-form__input"
+                  aria-describedby="contact-email-error"
                 />
+                <p
+                  id="contact-email-error"
+                  class="contact-form__field-error"
+                  role="alert"
+                ></p>
               </div>
               <div class="contact-form__field">
                 <label class="contact-form__label"
@@ -492,10 +499,18 @@
                 <input
                   type="tel"
                   name="phone"
+                  id="contact-phone"
                   required
+                  inputmode="tel"
                   placeholder="03-0000-0000"
                   class="contact-form__input"
+                  aria-describedby="contact-phone-error"
                 />
+                <p
+                  id="contact-phone-error"
+                  class="contact-form__field-error"
+                  role="alert"
+                ></p>
               </div>
             </div>
             <div class="contact-form__field">
